@@ -6,7 +6,7 @@ import joblib
 from data_intent import training_data
 
 # Chuyen du lieu thanh DataFrame
-rows = []
+rows = [] 
 
 for intent, examples in training_data.items():
     for example in examples:

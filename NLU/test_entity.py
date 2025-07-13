@@ -12,10 +12,10 @@ for ent in doc.ents:
     print(f"{ent.text} - {ent.label_}")
 
 print("\n--- Thêm Rule để nhận diện 'tên khóa học' ---")
-from spacy.matcher import PhraseMatcher
+from spacy.matcher import PhraseMatcher # tìm kiếm cụm từ
 matcher = PhraseMatcher(nlp.vocab, attr='LOWER')
 course_names = ['python', 'java', 'machine learning']
-patterns = [nlp.make_doc(text) for text in course_names]
+patterns = [nlp.make_doc(text) for text in course_names] # Chuyển các từ khóa thành "mẫu" mà spaCy hiểu được
 matcher.add("CoursePattern", patterns)
 
 doc = nlp(text)

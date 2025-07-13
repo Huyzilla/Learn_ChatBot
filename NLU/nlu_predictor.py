@@ -1,14 +1,14 @@
 # nlu_predictor.py
 import joblib
 import spacy
-from spacy.matcher import PhraseMatcher
+from spacy.matcher import PhraseMatcher # tìm kiếm cụm từ
 
 # Tải mô hình phân loại intent
 intent_classifier = joblib.load('intent_classifier.pkl')
 
 # Tải mô hình spaCy và thiết lập Matcher cho thực thể
 nlp = spacy.load("en_core_web_sm")
-matcher = PhraseMatcher(nlp.vocab, attr='LOWER')
+matcher = PhraseMatcher(nlp.vocab, attr='LOWER') 
 course_names = ['python', 'java', 'machine learning']
 patterns = [nlp.make_doc(text) for text in course_names]
 matcher.add("CoursePattern", patterns)
@@ -24,7 +24,7 @@ def predict_nlu(text):
     for match_id, start, end in matches:
         span = doc[start:end]
         entities.append({
-            "entity": "ten_khoa_hoc",
+            "entity": "ten_khoa_hoc",   
             "value": span.text
         })
     
